@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: provadeployment  # Sostituisci con un nome per la tua app su Render
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app  # Sostituisci 'app:app' se la tua app è definita in modo diverso
+    region: europe-west  # Scegli la regione desiderata (es. europe-west, us-east)
+    plan: free
+    healthCheckPath: /  # Facoltativo, ma utile per il monitoraggio
+    autoDeploy: true # Abilita l'autodeploy quando fai push su Git
